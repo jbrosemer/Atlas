@@ -8,6 +8,7 @@ cap = cv2.VideoCapture(0)
 # Create the haar cascade
 faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 cap.set(cv2.CAP_PROP_FPS , 5)
+width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
 print("width " + str(cap.get(cv2.CAP_PROP_FRAME_WIDTH)))
 while(True):
 	# Capture frame-by-frame
@@ -29,7 +30,8 @@ while(True):
 	# Draw a rectangle around the faces
 	for (x, y, w, h) in faces:
 		cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-		print("x " + str(x))
+		print("x + w / 2: " + str((x+w)/2))
+		# if (x + w)/2 > width/2
 
 	# Display the resulting frame
 	# cv2.imshow('frame', frame)
