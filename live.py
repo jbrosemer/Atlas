@@ -10,7 +10,7 @@ faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
 while(True):
 	# Capture frame-by-frame
-	print(cv2.get(cv2.CAP_PROP_FPS))
+	print(cap.get(cv2.CAP_PROP_FPS))
 	ret, frame = cap.read()
 
 	# Our operations on the frame come here
