@@ -1,5 +1,8 @@
 import cv2
 
+cascades = "haarcascade_frontalface_default.xml"
+video = cv2.VideoCapture(0)
+
 #States for FSM
 #Sweep to find number of players
 Sweep = True
@@ -16,6 +19,7 @@ Wait = False
 
 while Sweep:
     if(Sweep):
+
         Sweep = False
         Look = True
     if(Look):
