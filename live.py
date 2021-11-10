@@ -36,7 +36,7 @@ while(True):
 			kit.servo[0].angle = (100)
 		elif (2*x + w)/2 < (width/2-25):
 			kit.servo[0].angle = (80)
-		else
+		else:
 			kit.servo[0].angle = (90)
 
 
