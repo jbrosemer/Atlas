@@ -2,4 +2,4 @@ from adafruit_servokit import ServoKit
 kit = ServoKit(channels=16)
 
 while True:
-    kit.servo[0].angle = (91)
+    kit.servo[0].angle = (100)
