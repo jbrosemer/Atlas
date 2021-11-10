@@ -19,7 +19,6 @@ Wait = False
 
 while Sweep:
     if(Sweep):
-
         Sweep = False
         Look = True
     if(Look):
