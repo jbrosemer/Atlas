@@ -1,21 +1,29 @@
 # This script will detect faces via your webcam.
 # Tested with OpenCV3
 
+# import opencv
 import cv2
-from adafruit_servokit import ServoKit
-kit = ServoKit(channels=16)
+
+# import servokit to have pi move servos
+#from adafruit_servokit import ServoKit
+# there are 16 channels on the servo kit
+# kit = ServoKit(channels=16)
+# capture "video" from default camera
 cap = cv2.VideoCapture(0)
 
 # Create the haar cascade
 faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+# sets the fps of the video capturing to 15
 cap.set(cv2.CAP_PROP_FPS , 15)
+# what is the width of the frame we are capturing
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
-print("width " + str(cap.get(cv2.CAP_PROP_FRAME_WIDTH)))
+
+#loop
 while(True):
 	# Capture frame-by-frame
 	ret, frame = cap.read()
 
-	# Our operations on the frame come here
+	# grayscale the captured frame
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
 	# Detect faces in the image
@@ -33,12 +41,12 @@ while(True):
 		cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 		print("x + w / 2: " + str((2*x+w)/2))
 		print("width + " + str(width))
-		if (2*x + w)/2 > (width/2+25):
-			kit.servo[0].angle = (100)
-		elif (2*x + w)/2 < (width/2-25):
-			kit.servo[0].angle = (80)
-		else:
-			kit.servo[0].angle = (90)
+#		if (2*x + w)/2 > (width/2+25):
+#			kit.servo[0].angle = (100)
+#		elif (2*x + w)/2 < (width/2-25):
+#			kit.servo[0].angle = (80)
+#		else:
+#			kit.servo[0].angle = (90)
 
 
 	# Display the resulting frame
