@@ -5,9 +5,9 @@
 import cv2
 
 # import servokit to have pi move servos
-#from adafruit_servokit import ServoKit
+from adafruit_servokit import ServoKit
 # there are 16 channels on the servo kit
-# kit = ServoKit(channels=16)
+kit = ServoKit(channels=16)
 # capture "video" from default camera
 cap = cv2.VideoCapture(0)
 
@@ -41,12 +41,12 @@ while(True):
 		cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 		print("x + w / 2: " + str((2*x+w)/2))
 		print("width + " + str(width))
-#		if (2*x + w)/2 > (width/2+25):
-#			kit.servo[0].angle = (100)
-#		elif (2*x + w)/2 < (width/2-25):
-#			kit.servo[0].angle = (80)
-#		else:
-#			kit.servo[0].angle = (90)
+		if (2*x + w)/2 > (width/2+25):
+			kit.servo[0].angle = (100)
+		elif (2*x + w)/2 < (width/2-25):
+			kit.servo[0].angle = (80)
+		else:
+			kit.servo[0].angle = (90)
 
 
 	# Display the resulting frame
