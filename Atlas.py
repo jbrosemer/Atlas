@@ -1,69 +1,99 @@
 import cv2
-# import servokit to have pi move servos
+import time
+from faceTracking import FaceTracking
 from adafruit_servokit import ServoKit
-# there are 16 channels on the servo kit
-kit = ServoKit(channels=16)
-# capture "video" from default camera
-#defines the Haar Cascades
-cascades = "haarcascade_frontalface_default.xml"
-video = cv2.VideoCapture(0)
 
-# what is the width of the frame we are capturing
-width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
-
-#States for FSM
-#Sweep to find number of players
-Sweep = True
-Look = False
-Lock = False
-Tilt = False
-Wait = False
 #Soham's Classes
 #Ethics HRI core class
 #Probablistic Core
 #ME 123
+class Atlas:
+    def __init__(self):
+        kit = ServoKit(channels=16)
+        self.faceTracking = FaceTracking()
+        self.atlas = kit.servo[0]
+        self.roller1 = kit.servo[1]
+        self.roller2 = kit.servo[2]
 
+        self.start = "Sweep"
+        self.stateHandlers = {
+            "Sweep" :  self.Sweep, 
+            "Look"  :  self.Look,
+            "Lock"  :  self.Lock, 
+            "Wait"  :  self.Wait
+        }
 
+        # save servo rotation for each player
+        self.player_pos = []
 
-while True:
+    def run(self):
+        transition = self.stateHandlers[self.start]
+        while True:
+            next, cargo = transition(cargo)
+            transition = self.stateHandlers[next]
 
-    # Sweep mode, I.E one initial sweep to count the number of players and find their locations.
-    # THIS MODE WILL NEED TO BE TESTED WITH THE UNIT
-    # MIGHT NOT BE INCLUDED IN THE END, BUT WOULD BE THE FASTEST WAY TO PLAY
-    if Sweep:
-        ret, frame = video.read()
-        # once the initial sweep is finished go to Look mode automatically
-        if:
-            Sweep = False
-            Look = True
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
 
+    def Sweep(self):
+        print("Sweep")
+        # period T for continuous servo? - to stop sweeping
+        trajectory = []
+        while True: 
+            self.atlas.throttle = 1.0
+            trajectory.append((time.time(),self.atlas.throttle))
+            faces = self.faceTracking.detect()
 
-    # Look mode, I.E. looking for one of the people counted to throw the ball to.
-    if Look:
-        ret, frame = video.read()
-        # turn the main servo 360 degrees than return to 0.
-        # so +360 degree then -360 degree turn
+            if len(faces)>0:
+                trajectory += self.faceTracking.aim(faces[0])
+                self.atlas.throttle = 1.0
+                trajectory.append((time.time(),self.atlas.throttle))
+                    
+            if cv2.waitKey(1) & 0xFF == ord('s'):
+                break
 
-        # if a face is detected get out of sweep mode
-        Look = False
-        Lock = True
+        ts = trajectory[0][0]
+        dir = trajectory[0][1]
+        pos = 0
 
+        for pt in trajectory[1:]:
+            if pt[1] != 0.0:
+                pos += dir*(pt[0]-ts)
+                ts = pt[0]
+                dir = pt[1]
+            else:
+                self.player_pos.append(pos)
+                pos = 0 
 
-    if Lock:
-        Lock = False
-        Tilt = True
+        return "Look"  
 
+    def Look(self):
+        print("Look")
+        while True:
+            for pos in self.player_pos:
+                self.atlas.throttle = 1.0
+                time.sleep(pos)
+                self.atlas.throttle = 0.0
 
+                faces = self.faceTracking.detect()
+                if len(faces)>0:
+                    self.faceTracking.aim(faces[0])
+                    return "Lock"
 
-    if Tilt:
-        Tilt = False
-        Wait = True
+                if cv2.waitKey(1) & 0xFF == ord('s'):
+                    break
 
+    def Lock(self):
+        print("Lock")
+        self.roller1.angle = 70
+        self.roller2.angle = 70
 
+        time.sleep(1000)
 
-    if Wait:
-        Wait = False
-        Look = True
+        self.roller1.angle = 0
+        self.roller2.angle = 0
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+        return "Wait"
+
+    def Wait(self):
+        print("Wait")
