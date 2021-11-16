@@ -10,4 +10,5 @@ while True:
     if len(strs) > 3:
         if int(strs[5]) < 40:
             print("Ball!")
-    print(read_serial)
+        else:
+            print(read_serial)
