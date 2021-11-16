@@ -1,5 +1,6 @@
 import cv2
 import time
+import serial
 from faceTracking import FaceTracking
 from adafruit_servokit import ServoKit
 
@@ -10,11 +11,11 @@ from adafruit_servokit import ServoKit
 class Atlas:
     def __init__(self):
         kit = ServoKit(channels=16)
+        ser = serial.Serial('/dev/ttyUSB0', 9600)
         self.faceTracking = FaceTracking()
         self.atlas = kit.servo[0]
         self.roller1 = kit.servo[1]
         self.roller2 = kit.servo[2]
-
         self.start = "Sweep"
         self.stateHandlers = {
             "Sweep" :  self.Sweep, 
@@ -96,4 +97,5 @@ class Atlas:
         return "Wait"
 
     def Wait(self):
+
         print("Wait")
