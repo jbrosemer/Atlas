@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
 GPIO.setwarnings(False) # Ignore warning for now
 GPIO.setmode(GPIO.BOARD) # Use physical pin numbering
-GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 while True: # Run forever
-    if GPIO.input(18) == GPIO.HIGH:
+    if GPIO.input(12) == GPIO.HIGH:
         print("Button was pushed!")
