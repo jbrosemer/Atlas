@@ -1,9 +1,10 @@
-import serial
+from serial import Serial
 
-ser = serial.Serial('/dev/ttyAMA0', 9600, timeout=1)
+ser = Serial('/dev/ttyUSB0', 9600)
 ser.flush()
 
 while True:
-    if ser.in_waiting > 0:
-        line = ser.readline().decode('utf-8').rstrip()
-        print(line)
+    read_serial = ser.readline()
+    read_serial = read_serial.decode("utf-8")
+    print(read_serial)
+    
