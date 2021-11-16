@@ -8,5 +8,6 @@ while True:
     read_serial = read_serial.decode("utf-8")
     strs = read_serial.split(" ")
     if len(strs) > 3:
-        print(strs[4])
+        if int(strs[5]) < 40:
+            print("Ball!")
     print(read_serial)
