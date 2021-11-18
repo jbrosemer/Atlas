@@ -7,7 +7,7 @@ try:
     start = time.time()
     while True:
         print(str(round((time.time()-start)*10,1) % 17))
-        if round((time.time()-start)*10, 1) % 17 == 0:
+        if round((time.time()-start)*10, 1) % 17 == 1.0:
             print("here")
             if CW:
                 CW = False
