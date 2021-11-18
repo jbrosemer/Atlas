@@ -16,6 +16,7 @@ class Atlas:
         self.atlas = kit.servo[0]
         self.roller1 = kit.servo[1]
         self.roller2 = kit.servo[2]
+        self.cam = kit.servo[3]
         self.start = "Sweep"
         self.stateHandlers = {
             "Sweep" :  self.Sweep, 
