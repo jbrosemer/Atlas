@@ -6,7 +6,7 @@ CCW = False
 try:
     start = time.time()
     while True:
-        print(str(round((time.time()-start)*10,2)))
+        print(str(round((time.time()-start)*10,1)))
         if ((time.time() - start)*10) % 17 == 0:
             print("here")
             if CW:
