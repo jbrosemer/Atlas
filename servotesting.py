@@ -14,12 +14,13 @@ try:
                 CCW = True
             else:
                 print("here2")
+
                 CCW = False
                 CW = True
         if CW:
             kit.servo[0].angle = (80)
         if CCW:
-            kit.servo[0].angle = (80)
+            kit.servo[0].angle = (100)
 except KeyboardInterrupt:
     end = time.time()
     print("time of run: ", start-end)
