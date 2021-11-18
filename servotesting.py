@@ -6,8 +6,8 @@ CCW = False
 try:
     start = time.time()
     while True:
-        print(str(round((time.time()-start)*10,1)))
-        if round((time.time()-start)*10,1) % 17 == 0:
+        print(str(round((time.time()-start)*10,1) % 17))
+        if round((time.time()-start)*10, 1) % 17 == 0:
             print("here")
             if CW:
                 CW = False
