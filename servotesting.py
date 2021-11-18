@@ -6,7 +6,7 @@ CCW = False
 try:
     start = time.time()
     while True:
-        if time.time()-start > 1.4:
+        if time.time()-start > 2:
             start = time.time()
             if CW:
                 print("here")
@@ -18,9 +18,9 @@ try:
                 CCW = False
                 CW = True
         if CW:
-            kit.servo[0].angle = (80)
+            kit.servo[0].angle = (87)
         if CCW:
-            kit.servo[0].angle = (100)
+            kit.servo[0].angle = (93)
 except KeyboardInterrupt:
     end = time.time()
     print("time of run: ", start-end)
