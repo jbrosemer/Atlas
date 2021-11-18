@@ -9,9 +9,11 @@ try:
         if time.time()-start > 1.7:
             start = time.time()
             if CW:
+                print("here")
                 CW = False
                 CCW = True
             else:
+                print("here2")
                 CCW = False
                 CW = True
         if CW:
