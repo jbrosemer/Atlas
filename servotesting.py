@@ -7,6 +7,7 @@ try:
     start = time.time()
     while True:
         if ((time.time() - start)*10)%17 == 0:
+            print("here")
             if CW:
                 CW = False
                 CCW = True
@@ -14,7 +15,7 @@ try:
                 CCW = False
                 CW = True
         if CW:
-            kit.servo[0].angle = (100)
+            kit.servo[0].angle = (80)
         if CCW:
             kit.servo[0].angle = (80)
 except KeyboardInterrupt:
