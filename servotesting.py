@@ -6,7 +6,7 @@ CCW = False
 try:
     start = time.time()
     while True:
-        if time.time()-start > 3.2:
+        if time.time()-start > 3.3:
             start = time.time()
             if CW:
                 CW = False
@@ -16,7 +16,7 @@ try:
                 CW = True
         if CW:
             print("cw")
-            kit.servo[0].angle = (74)
+            kit.servo[0].angle = (73)
         if CCW:
             print("ccw")
             kit.servo[0].angle = (85)
