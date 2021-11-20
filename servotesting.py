@@ -18,7 +18,7 @@ try:
                 CCW = False
                 CW = True
         if CW:
-            kit.servo[0].angle = (87)
+            kit.servo[0].angle = (86)
         if CCW:
             kit.servo[0].angle = (94)
 except KeyboardInterrupt:
