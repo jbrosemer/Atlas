@@ -20,7 +20,7 @@ try:
         if CW:
             kit.servo[0].angle = (80)
         if CCW:
-            kit.servo[0].angle = (93)
+            kit.servo[0].angle = (92)
 except KeyboardInterrupt:
     end = time.time()
     print("time of run: ", start-end)
