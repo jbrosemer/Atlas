@@ -6,7 +6,7 @@ CCW = False
 try:
     start = time.time()
     while True:
-        if time.time()-start > 3:
+        if time.time()-start > 3.2:
             start = time.time()
             if CW:
                 CW = False
