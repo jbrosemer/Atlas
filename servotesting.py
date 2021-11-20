@@ -7,7 +7,7 @@ try:
     start = time.time()
     while True:
         if CCW:
-            if time.time()-start > 7.01:
+            if time.time()-start > 5.6:
                 start = time.time()
                 if CW:
                     CW = False
@@ -16,7 +16,7 @@ try:
                     CCW = False
                     CW = True
         elif CW:
-            if time.time()-start > 7.8:
+            if time.time()-start > 9:
                 start = time.time()
                 if CW:
                     CW = False
