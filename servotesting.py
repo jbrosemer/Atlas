@@ -29,7 +29,7 @@ try:
             kit.servo[0].angle = (86)
         elif CCW:
             print("ccw")
-            kit.servo[0].angle = (70)
+            kit.servo[0].angle = (78)
 except KeyboardInterrupt:
     kit.servo[0].angle = (82)
     end = time.time()
