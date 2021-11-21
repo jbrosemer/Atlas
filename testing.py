@@ -46,7 +46,7 @@ try:
                 if len(faces) > 0:
                     #        self.faceTracking.aim(faces[0])
                     increment += 1
-                    if increment > 10:
+                    if increment > 6:
                         Look = False
                         Lock = True
                         LockFirstTime = True
