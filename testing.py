@@ -8,8 +8,11 @@ Look = True
 Lock = False
 Drop = False
 Wait = False
+FirstTime = True
+LockFirstTime = True
 CW = True
 CCW = False
+increment = 0
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FPS , 15)
 faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
@@ -38,10 +41,18 @@ try:
         for (x, y, w, h) in faces:
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
         print("Found {0} faces!".format(len(faces)))
-        if len(faces) > 0:
-            #        self.faceTracking.aim(faces[0])
-            Look = False
-            Lock = True
+        if not FirstTime:
+            if len(faces) > 0:
+                #        self.faceTracking.aim(faces[0])
+                increment += 1
+                if increment > 3:
+                    Look = False
+                    Lock = True
+                    LockFirstTime = True
+            else:
+                increment = 0
+        else
+
         if CCW:
             if time.time() - start > 5.6:
                 start = time.time()
@@ -66,9 +77,11 @@ try:
         elif CCW:
             print("ccw")
             kit.servo[0].angle = (78)
+        FirstTime = False
         if cv2.waitKey(1) & 0xFF == ord('s'):
             break
     while Lock:
+        increment = 0
         print('lock')
         ret, frame = cap.read()
 
@@ -105,13 +118,16 @@ try:
         Drop = False
 
     while Wait:
+        increment = 0
         print('wait')
         angle = 85
         angle2 = 90 + (90 - int(angle))
         kit.servo[1].angle = (int(angle))
         kit.servo[2].angle = (int(angle2))
+        time.sleep(5)
         Look = True
         Wait = False
+        FirstTime = True
 except KeyboardInterrupt:
     kit.servo[0].angle = (82)
 
