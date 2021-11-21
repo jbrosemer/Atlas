@@ -102,7 +102,8 @@ try:
                 minSize=(30, 30)
                 # flags = cv2.CV_HAAR_SCALE_IMAGE
             )
-            #else:
+            if not len(faces) > 0:
+                kit.servo[0].angle = (93)
             for (x, y, w, h) in faces:
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
                 if (2*x + w)/2 > (width/2+10):
@@ -113,8 +114,6 @@ try:
                     kit.servo[0].angle = (90)
                     Drop = True
                     Lock = False
-            if len(faces) > 0:
-                kit.servo[0].angle = 93
 
         while Drop:
             print('drop')
