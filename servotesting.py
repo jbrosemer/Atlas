@@ -26,7 +26,7 @@ try:
                     CW = True
         if CW:
             print("cw")
-            kit.servo[0].angle = (88)
+            kit.servo[0].angle = (86)
         elif CCW:
             print("ccw")
             kit.servo[0].angle = (70)
