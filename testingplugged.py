@@ -15,6 +15,7 @@ cap.set(cv2.CAP_PROP_FPS , 15)
 faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
 start = time.time()
+
 while Look:
     print('look')
     angle = 110
@@ -85,11 +86,11 @@ while Lock:
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
         if (2*x + w)/2 > (width/2+25):
-            kit.servo[0].angle = (97)
+            kit.servo[0].angle = (80)
         elif (2*x + w)/2 < (width/2-25):
-            kit.servo[0].angle = (83)
+            kit.servo[0].angle = (87)
         else:
-            kit.servo[0].angle = (88)
+            kit.servo[0].angle = (83)
             Drop = True
             Lock = False
 
