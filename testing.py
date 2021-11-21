@@ -15,6 +15,7 @@ faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
 start = time.time()
 while Look:
+    print('look')
     angle = 110
     angle2 = 90 + (90 - int(angle))
     kit.servo[1].angle = (int(angle))
@@ -66,6 +67,7 @@ while Look:
     if cv2.waitKey(1) & 0xFF == ord('s'):
         break
 while Lock:
+    print('lock')
     ret, frame = cap.read()
 
     # grayscale the captured frame
