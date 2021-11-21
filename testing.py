@@ -14,7 +14,7 @@ CW = True
 CCW = False
 increment = 0
 cap = cv2.VideoCapture(0)
-cap.set(cv2.CAP_PROP_FPS , 15)
+cap.set(cv2.CAP_PROP_FPS , 30)
 faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
 start = time.time()
@@ -46,7 +46,7 @@ try:
                 if len(faces) > 0:
                     #        self.faceTracking.aim(faces[0])
                     increment += 1
-                    if increment > 3:
+                    if increment > 10:
                         Look = False
                         Lock = True
                         LockFirstTime = True
