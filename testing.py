@@ -96,7 +96,7 @@ try:
 
     while Drop:
         print('drop')
-        angle = 125
+        angle = 107
         angle2 = 90 + (90 - int(angle))
         kit.servo[1].angle = (int(angle))
         kit.servo[2].angle = (int(angle2))
@@ -106,10 +106,12 @@ try:
 
     while Wait:
         print('wait')
-        angle = 110
+        angle = 85
         angle2 = 90 + (90 - int(angle))
         kit.servo[1].angle = (int(angle))
         kit.servo[2].angle = (int(angle2))
+        Look = True
+        Wait = False
 except KeyboardInterrupt:
     kit.servo[0].angle = (82)
 
