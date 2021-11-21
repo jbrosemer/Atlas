@@ -19,7 +19,7 @@ cap.set(cv2.CAP_PROP_FPS , 15)
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
 
 #loop
-while(True):
+while True:
 	# Capture frame-by-frame
 	ret, frame = cap.read()
 

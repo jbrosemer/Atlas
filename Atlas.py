@@ -3,7 +3,6 @@ import time
 import serial
 from faceTracking import FaceTracking
 from adafruit_servokit import ServoKit
-
 class Atlas:
     def __init__(self):
         kit = ServoKit(channels=16)
@@ -115,3 +114,5 @@ class Atlas:
     def Wait(self):
 
         print("Wait")
+while True:
+    self.run()
