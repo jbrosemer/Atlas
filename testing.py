@@ -79,10 +79,10 @@ try:
                     CW = True
         if CW:
             print("cw")
-            kit.servo[0].angle = (87)
+            kit.servo[0].angle = (95)
         elif CCW:
             print("ccw")
-            kit.servo[0].angle = (78)
+            kit.servo[0].angle = (86)
         if cv2.waitKey(1) & 0xFF == ord('s'):
             break
     while Lock:
@@ -107,17 +107,17 @@ try:
             for (x, y, w, h) in faces:
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
                 if (2*x + w)/2 > (width/2+25):
-                    kit.servo[0].angle = (79)
+                    kit.servo[0].angle = (87)
                 elif (2*x + w)/2 < (width/2-25):
-                    kit.servo[0].angle = (86)
+                    kit.servo[0].angle = (94)
                 else:
-                    kit.servo[0].angle = (82)
+                    kit.servo[0].angle = (90)
                     Drop = True
                     Lock = False
 
     while Drop:
         print('drop')
-        angle = 130
+        angle = 30
         angle2 = 90 + (90 - int(angle))
         kit.servo[1].angle = (int(angle))
         kit.servo[2].angle = (int(angle2))
@@ -128,7 +128,7 @@ try:
     while Wait:
         increment = 0
         print('wait')
-        angle = 30
+        angle = 0
         angle2 = 90 + (90 - int(angle))
         kit.servo[1].angle = (int(angle))
         kit.servo[2].angle = (int(angle2))
@@ -137,6 +137,6 @@ try:
         Wait = False
         FirstTime = True
 except KeyboardInterrupt:
-    kit.servo[0].angle = (82)
+    kit.servo[0].angle = (90)
 
 
