@@ -3,7 +3,7 @@ import time
 import serial
 from adafruit_servokit import ServoKit
 kit = ServoKit(channels=16)
-ser = serial.Serial('/dev/ttyUSB0', 9600)
+#ser = serial.Serial('/dev/ttyUSB0', 9600)
 Look = True
 Lock = False
 Drop = False
