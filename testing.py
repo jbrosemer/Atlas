@@ -48,7 +48,7 @@ try:
                     increment += 1
                     if increment > 6:
                         Look = False
-                        Lock = True
+                        Drop = True
                         LockFirstTime = True
                 else:
                     increment = 0
