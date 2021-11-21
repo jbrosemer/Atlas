@@ -61,7 +61,7 @@ try:
                     increment = 0
 
             if CCW:
-                if time.time() - start > 6:
+                if time.time() - start > 8:
                     start = time.time()
                     if CW:
                         CW = False
@@ -80,7 +80,7 @@ try:
                         CW = True
             if CW:
                 print("cw")
-                kit.servo[0].angle = (93)
+                kit.servo[0].angle = (94)
             elif CCW:
                 print("ccw")
                 kit.servo[0].angle = (87)
