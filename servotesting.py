@@ -31,5 +31,6 @@ try:
             print("ccw")
             kit.servo[0].angle = (70)
 except KeyboardInterrupt:
+    kit.servo[0].angle = (82)
     end = time.time()
     print("time of run: ", start-end)
