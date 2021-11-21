@@ -82,7 +82,7 @@ try:
             kit.servo[0].angle = (95)
         elif CCW:
             print("ccw")
-            kit.servo[0].angle = (86)
+            kit.servo[0].angle = (87)
         if cv2.waitKey(1) & 0xFF == ord('s'):
             break
     while Lock:
