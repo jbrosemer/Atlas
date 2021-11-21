@@ -13,6 +13,7 @@ CCW = False
 cap = cv2.VideoCapture(0)
 faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+start = time.time()
 while Look:
     angle = 110
     angle2 = 90 + (90 - int(angle))
