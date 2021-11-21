@@ -61,10 +61,10 @@ while Look:
                 CW = True
     if CW:
         print("cw")
-        kit.servo[0].angle = (95)
+        kit.servo[0].angle = (97)
     elif CCW:
         print("ccw")
-        kit.servo[0].angle = (85)
+        kit.servo[0].angle = (83)
     if cv2.waitKey(1) & 0xFF == ord('s'):
         break
 while Lock:
