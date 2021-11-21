@@ -98,6 +98,7 @@ while Drop:
     angle2 = 90 + (90 - int(angle))
     kit.servo[1].angle = (int(angle))
     kit.servo[2].angle = (int(angle2))
+    time.sleep(5)
     Wait = True
     Drop = False
 
