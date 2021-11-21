@@ -13,7 +13,7 @@ class Atlas:
         self.roller1 = kit.servo[1]
         self.roller2 = kit.servo[2]
         self.cam = kit.servo[3]
-        self.start = "Sweep"
+        self.start = "Look"
         self.stateHandlers = {
             "Sweep" :  self.Sweep,
             "Look"  :  self.Look,
@@ -68,18 +68,37 @@ class Atlas:
     def Look(self):
         print("Look")
         while True:
-            for pos in self.player_pos:
-                self.atlas.throttle = 1.0
-                time.sleep(pos)
-                self.atlas.throttle = 0.0
+            if CCW:
+                if time.time() - start > 5.6:
+                    start = time.time()
+                    if CW:
+                        CW = False
+                        CCW = True
+                    else:
+                        CCW = False
+                        CW = True
+            elif CW:
+                if time.time() - start > 5:
+                    start = time.time()
+                    if CW:
+                        CW = False
+                        CCW = True
+                    else:
+                        CCW = False
+                        CW = True
+            if CW:
+                print("cw")
+                self.atlas.angle = (86)
+            elif CCW:
+                print("ccw")
+                self.atlas.angle = (78)
+            faces = self.faceTracking.detect()
+            if len(faces)>0:
+            #        self.faceTracking.aim(faces[0])
+                return "Lock"
 
-                faces = self.faceTracking.detect()
-                if len(faces)>0:
-                    self.faceTracking.aim(faces[0])
-                    return "Lock"
-
-                if cv2.waitKey(1) & 0xFF == ord('s'):
-                    break
+            if cv2.waitKey(1) & 0xFF == ord('s'):
+                break
 
     def Lock(self):
         print("Lock")

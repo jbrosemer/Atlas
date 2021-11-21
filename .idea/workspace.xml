@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63752b02-1b20-410f-9ba2-767ad6e2279c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/servotesting.py" beforeDir="false" afterPath="$PROJECT_DIR$/servotesting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Atlas.py" beforeDir="false" afterPath="$PROJECT_DIR$/Atlas.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,5 +139,16 @@
       <screen x="0" y="23" width="2048" height="1213" />
     </state>
     <state x="362" y="297" width="670" height="676" key="search.everywhere.popup/0.23.2048.1213@0.23.2048.1213" timestamp="1637456918815" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/faceTracking.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
