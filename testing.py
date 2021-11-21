@@ -107,9 +107,9 @@ try:
             #else:
             for (x, y, w, h) in faces:
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-                if (2*x + w)/2 > (width/2+25):
+                if (2*x + w)/2 > (width/2+10):
                     kit.servo[0].angle = (94)
-                elif (2*x + w)/2 < (width/2-25):
+                elif (2*x + w)/2 < (width/2-10):
                     kit.servo[0].angle = (87)
                 else:
                     kit.servo[0].angle = (90)
