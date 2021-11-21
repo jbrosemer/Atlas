@@ -69,7 +69,7 @@ try:
                     CCW = False
                     CW = True
         elif CW:
-            if time.time() - start > 5:
+            if time.time() - start > 2:
                 start = time.time()
                 if CW:
                     CW = False
