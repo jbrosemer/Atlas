@@ -4,10 +4,6 @@ import serial
 from faceTracking import FaceTracking
 from adafruit_servokit import ServoKit
 
-#Soham's Classes
-#Ethics HRI core class
-#Probablistic Core
-#ME 123
 class Atlas:
     def __init__(self):
         kit = ServoKit(channels=16)

@@ -6,4 +6,4 @@ while True:
     angle = input("enter the motor speed: ")
     print(str(time.time()-start))
     start = time.time()
-    kit.servo[0].angle = (int(angle))
+    kit.servo[1].angle = (int(angle))
