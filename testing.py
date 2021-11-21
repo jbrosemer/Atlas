@@ -61,7 +61,7 @@ try:
                     increment = 0
 
             if CCW:
-                if time.time() - start > 5.6:
+                if time.time() - start > 6:
                     start = time.time()
                     if CW:
                         CW = False
@@ -70,7 +70,7 @@ try:
                         CCW = False
                         CW = True
             elif CW:
-                if time.time() - start > 2:
+                if time.time() - start > 6:
                     start = time.time()
                     if CW:
                         CW = False
