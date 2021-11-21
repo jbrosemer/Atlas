@@ -22,7 +22,7 @@ try:
     while True:
         while Look:
             print('look')
-            angle = 0
+            angle = 10
             angle2 = 90 + (90 - int(angle))
             kit.servo[1].angle = (int(angle))
             kit.servo[2].angle = (int(angle2))
@@ -80,10 +80,10 @@ try:
                         CW = True
             if CW:
                 print("cw")
-                kit.servo[0].angle = (95)
+                kit.servo[0].angle = (96)
             elif CCW:
                 print("ccw")
-                kit.servo[0].angle = (87)
+                kit.servo[0].angle = (86)
             if cv2.waitKey(1) & 0xFF == ord('s'):
                 break
         while Lock:
