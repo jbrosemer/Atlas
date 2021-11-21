@@ -22,7 +22,7 @@ try:
     while True:
         while Look:
             print('look')
-            angle = 110
+            angle = 0
             angle2 = 90 + (90 - int(angle))
             kit.servo[1].angle = (int(angle))
             kit.servo[2].angle = (int(angle2))
