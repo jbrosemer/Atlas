@@ -89,7 +89,7 @@ while Lock:
         elif (2*x + w)/2 < (width/2-25):
             kit.servo[0].angle = (83)
         else:
-            kit.servo[0].angle = (90)
+            kit.servo[0].angle = (88)
             Drop = True
             Lock = False
 
