@@ -11,7 +11,7 @@ try:
         kit.servo[1].angle = (int(angle))
         kit.servo[2].angle = (int(angle2))
 except KeyboardInterrupt:
-    angle = 90
+    angle = 0
     angle2 = 180 - int(angle)
     kit.servo[1].angle = (int(angle))
     kit.servo[2].angle = (int(angle2))
