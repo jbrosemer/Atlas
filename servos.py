@@ -4,7 +4,7 @@ kit = ServoKit(channels=16)
 start = 0
 while True:
     angle = input("enter the motor speed: ")
-    angle2 = input("enter second motor")
+    angle2 = 90 + (90 - angle)
     print(str(time.time()-start))
     start = time.time()
     kit.servo[1].angle = (int(angle))
