@@ -15,7 +15,7 @@ class Atlas:
         self.cam = kit.servo[3]
         self.start = "Sweep"
         self.stateHandlers = {
-            "Sweep" :  self.Sweep, 
+            "Sweep" :  self.Sweep,
             "Look"  :  self.Look,
             "Lock"  :  self.Lock, 
             "Wait"  :  self.Wait
