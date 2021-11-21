@@ -11,6 +11,7 @@ Wait = False
 CW = True
 CCW = False
 cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_FPS , 15)
 faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
 start = time.time()
