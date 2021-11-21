@@ -7,10 +7,15 @@ ser = serial.Serial('/dev/ttyUSB0', 9600)
 Look = True
 Lock = False
 Drop = False
+Wait = False
 cap = cv2.VideoCapture(0)
 faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
 while Look:
+    angle = 110
+    angle2 = 90 + (90 - int(angle))
+    kit.servo[1].angle = (int(angle))
+    kit.servo[2].angle = (int(angle2))
     ret, frame = cap.read()
 
     # grayscale the captured frame
@@ -51,7 +56,7 @@ while Look:
                 CW = True
     if CW:
         print("cw")
-        kit.servo[0].angle = (86)
+        kit.servo[0].angle = (87)
     elif CCW:
         print("ccw")
         kit.servo[0].angle = (78)
@@ -73,9 +78,28 @@ while Lock:
     )
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    if (2*x + w)/2 > (width/2+25):
-    	kit.servo[0].angle = (100)
-    elif (2*x + w)/2 < (width/2-25):
-     	kit.servo[0].angle = (80)
-    else:
-     	kit.servo[0].angle = (90)
+        if (2*x + w)/2 > (width/2+25):
+            kit.servo[0].angle = (86)
+        elif (2*x + w)/2 < (width/2-25):
+            kit.servo[0].angle = (80)
+        else:
+            kit.servo[0].angle = (82)
+            Drop = True
+            Lock = False
+
+while Drop:
+    angle = 125
+    angle2 = 90 + (90 - int(angle))
+    kit.servo[1].angle = (int(angle))
+    kit.servo[2].angle = (int(angle2))
+    Wait = True
+    Drop = False
+
+while Wait:
+    angle = 110
+    angle2 = 90 + (90 - int(angle))
+    kit.servo[1].angle = (int(angle))
+    kit.servo[2].angle = (int(angle2))
+
+
+
