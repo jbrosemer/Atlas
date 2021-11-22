@@ -61,7 +61,7 @@ try:
                     increment = 0
 
             if CCW:
-                if time.time() - start > 8:
+                if time.time() - start > 15:
                     start = time.time()
                     if CW:
                         CW = False
@@ -70,7 +70,7 @@ try:
                         CCW = False
                         CW = True
             elif CW:
-                if time.time() - start > 10:
+                if time.time() - start > 15:
                     start = time.time()
                     if CW:
                         CW = False
@@ -144,6 +144,12 @@ try:
             Look = True
             Wait = False
             FirstTime = True
+            if CW:
+                CCW = True
+                CW = False
+            else:
+                CW = True
+                CCW = False
 except KeyboardInterrupt:
     kit.servo[0].angle = (90)
 
