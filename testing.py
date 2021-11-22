@@ -70,7 +70,7 @@ try:
                         CCW = False
                         CW = True
             elif CW:
-                if time.time() - start > 6:
+                if time.time() - start > 10:
                     start = time.time()
                     if CW:
                         CW = False
@@ -106,16 +106,16 @@ try:
                 locker = time.time()
                 LockFirstTime = False
             else:
-                if time.time()-locker > 5:
+                if time.time()-locker > 2:
                     Look = True
                     Lock = False
             if len(faces) > 0:
                 LockFirstTime = True
             for (x, y, w, h) in faces:
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-                if (2*x + w)/2 > (width/2+25):
+                if (2*x + w)/2 > (width/2+30):
                     kit.servo[0].angle = (88)
-                elif (2*x + w)/2 < (width/2-25):
+                elif (2*x + w)/2 < (width/2-30):
                     kit.servo[0].angle = (93)
                 else:
                     kit.servo[0].angle = (90)
