@@ -73,11 +73,11 @@ try:
                 if time.time() - start > 15:
                     start = time.time()
                     if CW:
-                        CW = False
-                        CCW = True
-                    else:
-                        CCW = False
                         CW = True
+                        CCW = False
+                    else:
+                        CCW = True
+                        CW = False
             if CW:
                 print("cw")
                 kit.servo[0].angle = 93
