@@ -80,7 +80,7 @@ try:
                         CW = True
             if CW:
                 print("cw")
-                kit.servo[0].angle = (94)
+                kit.servo[0].angle = 94
             elif CCW:
                 print("ccw")
                 kit.servo[0].angle = (87)
@@ -109,7 +109,7 @@ try:
                 if time.time()-locker > 5:
                     Look = True
                     Lock = False
-            if not len(faces) > 0:
+            if len(faces) > 0:
                 LockFirstTime = True
             for (x, y, w, h) in faces:
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
