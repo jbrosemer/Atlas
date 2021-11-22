@@ -10,8 +10,8 @@ Drop = False
 Wait = False
 FirstTime = True
 LockFirstTime = True
-CW = True
-CCW = False
+CW = False
+CCW = True
 increment = 0
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FPS , 30)
