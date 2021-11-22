@@ -46,9 +46,9 @@ try:
                 if len(faces) > 0:
                     #        self.faceTracking.aim(faces[0])
                     increment += 1
-                    if increment > 7:
+                    if increment > 6:
                         Look = False
-                        Drop = True
+                        Lock = True
                         LockFirstTime = True
                 else:
                     increment = 0
@@ -102,18 +102,26 @@ try:
                 minSize=(30, 30)
                 # flags = cv2.CV_HAAR_SCALE_IMAGE
             )
-            if not len(faces) > 0:
-                kit.servo[0].angle = (93)
-            for (x, y, w, h) in faces:
-                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-                if (2*x + w)/2 > (width/2+10):
-                    kit.servo[0].angle = (88)
-                elif (2*x + w)/2 < (width/2-10):
-                    kit.servo[0].angle = (93)
-                else:
-                    kit.servo[0].angle = (90)
-                    Drop = True
+            if LockFirstTime:
+                locker = time.time()
+                LockFirstTime = False
+            else:
+                if time.time()-locker > 5:
+                    Look = True
                     Lock = False
+            if not len(faces) > 0:
+                LockFirstTime = True
+            else:
+                for (x, y, w, h) in faces:
+                    cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                    if (2*x + w)/2 > (width/2+25):
+                        kit.servo[0].angle = (88)
+                    elif (2*x + w)/2 < (width/2-25):
+                        kit.servo[0].angle = (93)
+                    else:
+                        kit.servo[0].angle = (90)
+                        Drop = True
+                        Lock = False
 
         while Drop:
             kit.servo[0].angle = (90)
