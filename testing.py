@@ -46,7 +46,7 @@ try:
                 if len(faces) > 0:
                     #        self.faceTracking.aim(faces[0])
                     increment += 1
-                    if increment > 6:
+                    if increment > 4:
                         Look = False
                         Lock = True
                         LockFirstTime = True
@@ -111,17 +111,16 @@ try:
                     Lock = False
             if not len(faces) > 0:
                 LockFirstTime = True
-            else:
-                for (x, y, w, h) in faces:
-                    cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-                    if (2*x + w)/2 > (width/2+25):
-                        kit.servo[0].angle = (88)
-                    elif (2*x + w)/2 < (width/2-25):
-                        kit.servo[0].angle = (93)
-                    else:
-                        kit.servo[0].angle = (90)
-                        Drop = True
-                        Lock = False
+            for (x, y, w, h) in faces:
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                if (2*x + w)/2 > (width/2+25):
+                    kit.servo[0].angle = (88)
+                elif (2*x + w)/2 < (width/2-25):
+                    kit.servo[0].angle = (93)
+                else:
+                    kit.servo[0].angle = (90)
+                    Drop = True
+                    Lock = False
 
         while Drop:
             kit.servo[0].angle = (90)
