@@ -83,7 +83,7 @@ try:
                 kit.servo[0].angle = 93
             elif CCW:
                 print("ccw")
-                kit.servo[0].angle = (86)
+                kit.servo[0].angle = (87)
             if cv2.waitKey(1) & 0xFF == ord('s'):
                 break
         while Lock:
@@ -129,7 +129,7 @@ try:
             angle2 = 90 + (90 - int(angle))
             kit.servo[1].angle = (int(angle))
             kit.servo[2].angle = (int(angle2))
-            time.sleep(5)
+            time.sleep(1)
             Wait = True
             Drop = False
 
@@ -140,7 +140,7 @@ try:
             angle2 = 90 + (90 - int(angle))
             kit.servo[1].angle = (int(angle))
             kit.servo[2].angle = (int(angle2))
-            time.sleep(5)
+            time.sleep(1)
             Look = True
             Wait = False
             FirstTime = True
