@@ -46,7 +46,7 @@ try:
                 if len(faces) > 0:
                     #        self.faceTracking.aim(faces[0])
                     increment += 1
-                    if increment > 6:
+                    if increment > 7:
                         Look = False
                         Drop = True
                         LockFirstTime = True
@@ -116,6 +116,7 @@ try:
                     Lock = False
 
         while Drop:
+            kit.servo[0].angle = (90)
             print('drop')
             angle = 30
             angle2 = 90 + (90 - int(angle))
