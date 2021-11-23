@@ -1,13 +1,14 @@
 import serial
 import time
 from datetime import datetime
-from os.path import join
+import os
 
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 ser.flush()
 
+
 start = time.time()
-with open(join("logs", datetime.strftime(datetime.now(), "%d_%m_%Y_%H:%M:%S_logs")),'w') as f:
+with open(os.path.join(os.getcwd(),"logs", datetime.strftime(datetime.now(), "%d_%m_%Y_%H:%M:%S_logs")),'w') as f:
     while True:
         read_serial = ser.readline()
         read_serial = read_serial.decode("utf-8")
